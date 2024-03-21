@@ -28,6 +28,8 @@ let topPipeImg;
 let bottomPipeImg;
 // physics
 let velocityX = -2; // pipes moving
+let velocityY = 0; // bird jump speed
+let gravity = 0.4;
 
 window.onload = function () {
   board = document.getElementById("board");
@@ -53,11 +55,14 @@ window.onload = function () {
 
   requestAnimationFrame(update);
   setInterval(placePipes, 1500);
+  document.addEventListener("keydown", moveBird);
 };
 function update() {
   requestAnimationFrame(update);
   context.clearRect(0, 0, board.width, board.height);
   // bird
+  velocityY += gravity;
+  bird.y += velocityY;
   context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
   // pipe
   for (let i = 0; i < pipeArray.length; i++) {
@@ -93,4 +98,10 @@ function placePipes() {
     passed: false,
   };
   pipeArray.push(bottomPipe);
+}
+function moveBird(e) {
+  if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
+    // jump
+    velocityY = -6;
+  }
 }
