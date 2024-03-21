@@ -1,11 +1,44 @@
-@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tourney:ital,wght@0,100..900;1,100..900&display=swap");
 body {
-  font-family: "Black Ops One", system-ui;
+  font-family: "Tourney", sans-serif;
   text-align: center;
-  background: #f7ede2;
 }
 
 #board {
   /* background-color: skyblue; */
   background-image: url("flappybirdbg.png");
+}
+button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  #canvas-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  #buttons {
+    position: absolute;
+    top: 92%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  #buttons button {
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    font-size: 2rem;
+  }
 }
